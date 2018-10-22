@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>C+R Friends assignment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              <strong>C+R Friends</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+  
+      <main role="main">
+  
+        <section class="jumbotron text-center">
+          <div class="container">
+            <h1 class="jumbotron-heading">These are my friends!</h1>
+          </div>
+        </section>
+  
+        <div class="album py-5 bg-light">
+          <div class="container">
+             <form action='/create_friend' method='post'>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Occupation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in friends: %}
+                        <tr>
+                            <td>{{ i['first_name'] }}</td>
+                            <td>{{ i['last_name'] }}</td>
+                            <td>{{ i['occupation'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+  
+                <h4 class="mb-3" id='info'><u>Add a friend</u></h4>
+                <div class="mb-3">
+                    <label for="firstName">First name: </label>
+                    <input type="text" class="form-control" name="first_name" placeholder="">
+                </div>
+
+                <div class="mb-3">
+                    <label for="lastName">Last name: </label>
+                    <input type="text" class="form-control" name="last_name" placeholder="">
+                </div>
+
+                <div class="mb-3">
+                    <label for="occupation">Occupation: </label>
+                    <input type="text" class="form-control" name="occupation" placeholder="">
+                </div>
+              
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+            </form>
+
+            
+          </div>
+        </div>
+  
+      </main>
+      
+</body>
+</html>
